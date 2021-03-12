@@ -1,25 +1,74 @@
-import logo from './logo.svg';
-import './App.css';
+// import './App.css';
+// import Mensagem from "./components/mensagem";
+import React from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+class Mensagem extends React.Component {
+    state = {
+
+       chat: [],
+    valorInputUsuario: "",
+    valorInputMensagem: ""
 }
 
-export default App;
+adicionarMensagem = () => {
+    const novaMensagem = {
+        usuario: this.state.valorInputUsuario,
+        mensagem: this.state.valorInputMensagem
+    }
+
+    const novasMensagens = [... this.state.chat, novaMensagem];
+
+    this.setState({
+        chat: novasMensagens,
+        valorInputUsuario: "",
+        valorInputMensagem: "", 
+    });
+};
+
+onChangeInputUsuario = (event) => {
+    this.setState({valorInputUsuario: event.target.value});
+};
+
+onChangeInpuMensagem = (event) => {
+    this.setState({valorInputMensagem: event.target.value});
+};
+
+render() {
+    const mensagemEnviada = this.state.chat.map((info) => {
+        return (
+        <p>
+            {info.usuario} : {info.mensagem}
+        </p>
+        );
+    });
+
+    return (
+    <div>
+
+      <input
+       value={this.state.InputUsuario}
+       onChange={this.onChangeInputUsuario}
+       placeholder={"Nome"}
+       />
+       
+       <input
+       value={this.state.InputMensagem}
+       onChange={this.onChangeInpuMensagem}
+       placeholder={"Mensagem"}
+       />
+
+      <button onClick={this.adicionarMensagem}>Adicionar</button>  
+        
+      <div>{mensagemEnviada}</div>
+
+    </div>
+
+    );
+
+
+}
+
+}
+
+export default Mensagem;
