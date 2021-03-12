@@ -38,7 +38,7 @@ render() {
     const mensagemEnviada = this.state.chat.map((info) => {
         return (
         <p>
-            {info.usuario} : {info.mensagem}
+            {info.usuario}: {info.mensagem}
         </p>
         );
     });
