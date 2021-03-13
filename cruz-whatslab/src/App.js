@@ -1,6 +1,7 @@
 // import './App.css';
 // import Mensagem from "./components/mensagem";
 import React from 'react';
+import "./App.css";
 
 
 class Mensagem extends React.Component {
@@ -44,24 +45,33 @@ render() {
     });
 
     return (
-    <div>
+    <div className="msgContainer">
+      <div className="app">
+          <div className="mensagem">
+            <div className="text">
+              
+        {mensagemEnviada}
 
-      <input
-       value={this.state.InputUsuario}
-       onChange={this.onChangeInputUsuario}
-       placeholder={"Nome"}
-       />
-       
-       <input
-       value={this.state.InputMensagem}
-       onChange={this.onChangeInpuMensagem}
-       placeholder={"Mensagem"}
-       />
-
-      <button onClick={this.adicionarMensagem}>Adicionar</button>  
-        
-      <div>{mensagemEnviada}</div>
-
+                <div className="input">
+                    <input 
+                    className="inputN" 
+                    value={this.state.InputUsuario}
+                    onChange={this.onChangeInputUsuario}
+                    placeholder={"Nome"}
+                    />
+                    
+                    <input
+                    className="inputM" 
+                    value={this.state.InputMensagem}
+                    onChange={this.onChangeInpuMensagem}
+                    placeholder={"Mensagem"}
+                    />
+                    <button onClick={this.adicionarMensagem}>Adicionar</button>
+                </div>  
+            </div>
+          </div>
+      </div>
+      
     </div>
 
     );
